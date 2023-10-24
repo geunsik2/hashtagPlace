@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>Hashtag Place</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+</head>
+
+<body class="is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+		
+		<!-- Main -->
+		<div id="map">
+
+			<!-- Analysis Tools -->
+			<div class="MapControlView">
+				<div data-id="location" class="location">
+					<a href="#" id="northDirection" class="far fa-compass" onclick="Module.getViewCamera().setDirect(0);"></a>
+					<a href="#" class="accessLocation" onclick="Module.getViewCamera().setLocation(new Module.JSVector3D(128.68231393106973, 35.8346856841486, 1000.0));"></a>
+				</div>
+				<div data-id="zoomcontrol" class="zoom_control fold"><div style="width: 32px; border-radius: 3px; box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 2px 0px;"><button class="incAltitude" style="float: left; cursor: pointer; width: 32px; height: 32px; user-select: none; border-width: medium medium 1px; border-style: none none solid; border-color: currentcolor currentcolor rgb(226, 226, 226); border-image: none; background: rgb(255, 255, 255) url(&quot;https://t1.daumcdn.net/mapjsapi/images/2x/control.png&quot;) -40px 0px / 116px 264px no-repeat; border-radius: 3px 3px 0px 0px;" draggable="false" title="확대" type="button" onclick="setAltitude(-500);"></button><div style="float: left; background: url(&quot;https://t1.daumcdn.net/mapjsapi/images/2x/bg_zoom_control.png&quot;); padding: 7px 0px; transition: height 0s ease 0s, margin 0.1s ease 0s;"><div style="cursor: pointer; position: relative; background-size: 116px 264px; transition: height 0.1s ease 0s; margin: 2px 0px; display: none;"><div style="position: absolute; width: 4px; height: 100%; background-color: rgb(51, 150, 255); left: 50%; margin: 0px 0px 0px -2px;"><div style="width: 4px; height: 2px; margin-bottom: -2px; bottom: 0px; position: absolute; background: url(&quot;https://t1.daumcdn.net/mapjsapi/images/2x/control.png&quot;) -50px -127px / 116px 264px;"></div><div style="width: 4px; height: 2px; margin-top: -2px; top: 0px; position: absolute; background: url(&quot;https://t1.daumcdn.net/mapjsapi/images/2x/control.png&quot;) -40px -100px / 116px 264px;"></div></div><div style="position: absolute; background-color: rgb(204, 204, 204); transition: height 0.1s ease 0s; left: 50%; margin: 0px 0px 0px -2px; width: 4px; height: 16px;"></div><div style="cursor: row-resize; position: absolute; width: 20px; height: 10px; margin: -4px 0px 0px -10px; background: url(&quot;https://t1.daumcdn.net/mapjsapi/images/2x/control.png&quot;) -40px -80px / 116px 264px; left: 50%; transition: top 0.1s ease 0s; top: 16px;"></div></div></div><button class="decAltitude" style="float: left; cursor: pointer; width: 32px; height: 32px; user-select: none; border-width: 1px medium medium; border-style: solid none none; border-color: rgb(226, 226, 226) currentcolor currentcolor; border-image: none; background: rgb(255, 255, 255) url(&quot;https://t1.daumcdn.net/mapjsapi/images/2x/control.png&quot;) -40px -32px / 116px 264px no-repeat; border-radius: 0px 0px 3px 3px; margin: -1px 0px 0px;" draggable="false" title="축소" type="button" onclick="setAltitude(500);"></button><div style="position: absolute; margin: 41px 0px 0px -30px; background-size: 116px 264px; display: none;"></div><button type="button" class="btn_zoom_coach">슬라이더 토글</button><div style="clear: both;"></div></div></div>
+				<div data-id="tools" class="tools tools-CLEAR">
+					<a data-id="distance" class="distance" href="#" onclick="setMouseState('measure');"></a>
+					<a data-id="area" class="area" href="#" onclick="setMouseState('measure1');"></a>
+					<a id="altitude" class="fas fa-ruler-vertical" href="#" onclick="setMouseState('measure2');"></a>
+					<a id="clear" class="fa-solid fa-eraser" href="#" onclick="setMouseState('move');"></a>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Sidebar -->
+		<div id="sidebar">
+			<div class="inner">
+
+				<!-- Logo -->
+				<div class="logoWrap">
+					<p class="refresh" style="cursor: pointer;">Hashtag Place</p>
+					<img class="refresh" src="./assets/images/common/hashtag.png" style="cursor: pointer;">
+				</div>
+
+				<!-- Search -->
+				<div class="searchWrap">
+					<input type="search" id="search_keyword_query" maxlength="100" autocomplete="off" placeholder="Search" onkeypress="if(event.keyCode == 13) {searchSubmit();}">
+					<div id="search_icon" onclick="searchSubmit()">
+						<i class="fas fa-search"></i>
+					</div>
+				</div>
+
+				<!-- Result -->
+				<div class="resultWrap">
+					<!-- 동적 태그 생성 -->
+				</div>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<header class="major">
+						<h2>Menu</h2>
+					</header>
+					<ul>
+						<li>
+							<span class="opener" id="district_list">행정구역</span>
+							<!-- 동적 태그 생성-->
+						</li>
+						<li>
+							<span class="opener">연령</span>
+							<ul>
+								<li data-idx="4"><a class="age" href="#">10대</a></li>
+								<li data-idx="6"><a class="age" href="#">20대</a></li>
+								<li data-idx="8"><a class="age" href="#">30대</a></li>
+								<li data-idx="10"><a class="age" href="#">40대</a></li>
+								<li data-idx="12"><a class="age" href="#">50대</a></li>
+								<li data-idx="14"><a class="age" href="#">60대</a></li>
+								<li data-idx="16"><a class="age" href="#">70대</a></li>
+							</ul>
+						</li>
+						<li>
+							<span class="opener">성별</span>
+							<ul>
+								<li data-idx="0"><a class="gender" href="#">남자</a></li>
+								<li data-idx="1"><a class="gender" href="#">여자</a></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+
+				<!-- Conditons-->
+				<div class="conditionWrap">
+					<button id="conditonSubmit">조회</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Scripts -->
+	<script>
+		var initScript = document.createElement('script');
+		initScript.src = "./assets/js/init.js";
+		document.body.appendChild(initScript);
+	</script>
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+</body>
+</html>
